@@ -14,10 +14,10 @@
   <title>Eazy Car | Home</title>
 
   <!-- styling files -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/booking.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="booking.css">
+  <link rel="stylesheet" href="customizae.css">
   <link rel="stylesheet" href="./assets/css/home.css">
-  <link rel="stylesheet" href="./assets/css/customizae.css">
   <!-- CDN Links -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -26,41 +26,53 @@
 </head>
 
 <body>
-  <!-- navbar section -->
-  <nav class="navbar navbar-expand-xl px-5 fixed-top bg-white m-0">
+   <!-- navbar section --> <nav class="navbar navbar-expand-xl px-5 fixed-top bg-white m-0" style="z-index: 1;">
     <div class="container-fluid">
       <a class="navbar-brand fs-2 fw-bold" href="#">
         <img src="./assets/images/LOGO.png" alt="" />
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarDark"
-        aria-controls="navbarDark"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDark"
+        aria-controls="navbarDark" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon custom-black-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarDark">
         <ul class="navbar-nav mb-2 mb-xl-0 ms-auto p-2 text-center">
           <li class="nav-item me-3">
-            <a class="nav-link active bold nav-text-top" href="./index.html">Home</a>
+            <a class="nav-link  nav-text-top" href="./index.html">Home</a>
           </li>
           <li class="nav-item me-3">
             <a class="nav-link nav-text-top" href="./about.html">About</a>
           </li>
           <li class="nav-item me-3">
-            <a class="nav-link nav-text-top" href="./booking.html">Reservation</a>
+            <a class="nav-link nav-text-top active bold" href="./booking.html">Reservation</a>
           </li>
           <li class="nav-item me-3">
             <a class="nav-link nav-text-top" href="./contact.html">Contact</a>
           </li>
+          <li class="nav-item text-dark fw-bold fs-3 me-3">
+            <span id="panelCounter" class="panel-counter d-flex justify-content-center align-items-center">0</span>
+            <i class="bi bi-cart"  id="openCartButton"></i>
+          </li>
+
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> 
+
+
+  <div class="list position-fixed" style="height: 100vh; width: 32rem;z-index: 1000;">
+    <div class="pe-2 fs-3 bold  position-absolute" style="right: 0;;color: white;cursor: pointer;" id="X">X</div>
+    <div class="list-buttom">
+      <p class="pricecounter text-center p-0 m-0 pt-2 pb-2 fw-bold" style="background-color: red; color: white;">TOTAL : 0 DH</p>
+  </div>
+  <a href="./devis.html" class="btn boton-rent-custom px-5 mt-3 w-100" target="_blank" style="text-decoration:none;">RENT NOW</a>
+    
+    <ul class="list-content">
+
+    </ul>
+  
+  </div>
+
   <!-- main content -->
   <main class="py-5">
     <section class="container-fluid pt-5">
@@ -68,7 +80,7 @@
         <div class="images col-md-6">
           <div class="main-img text-light p-5">
             <div class="img-desc pb-3">
-              <h1>Fuel Your Passion Discover aymane</h1>
+              <h1>Fuel Your Passion Discover</h1>
               <p class="car-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure quaerat voluptatem est optio vero. Ipsum </p>  
             </div>
             <img class="w-100" src="./assets/images/bg/details.png" alt="">
@@ -205,16 +217,19 @@
 
 
 
-  <script src="./assets/js/objects.js"></script>
-  <script src="./assets/js/carData.js"></script>
-  <script src="./assets/js/customize.js"></script>
+ <script src="index.js"></script>
   
   <!-- <script src="./assets/js/filter.js"></script> -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
-
+    crossorigin="anonymous"></script> 
+    
+  
+  
+  <script src="cardata.js"></script>
+  <script src="filter.js"></script>
+<script src="customize.js"></script>
 </body>
 
 </html>

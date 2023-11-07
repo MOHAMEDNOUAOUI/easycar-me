@@ -62,7 +62,7 @@ listButtons.addEventListener("click", function () {
     <h5 class="card-title">${value.name}</h5>
     <p class="card-text">${value.description}</p>
     <div class="details d-flex align-items-center justify-content-between">
-    <p class="card-price bold m-0 m-0">${value.price}</p>
+    <p class="card-price bold m-0 m-0">${value.price} DH</p>
     <button id="openModalButton" onclick="addtocart(${key})" class="button listPopup">Rent Now</button>
     </div>
     </div>
@@ -121,6 +121,8 @@ function addtocart(key) {
 var totalprice = 0;
 var countpanier = 0;
 
+
+
 function reloadcard() {
   listcart.innerHTML = "";
   totalprice = 0;
@@ -138,8 +140,9 @@ function reloadcard() {
   count.innerHTML = countpanier;
 }
 
+
 function add(value) {
-  if (listcart!==0) {
+  if (listcard.length !== 0) {
     let listItem = createListItem(value);
     listcart.appendChild(listItem);
   }
@@ -159,8 +162,11 @@ function createListItem(item, incart) {
       <div class="pricecart">${item.price.toLocaleString()}</div></div>
       <div class="botons d-grid gap-2 d-md-block">
       <div class="w-100">
-      <button class="btn boton-rent-custom"><a href="./devis.html" style="text-decoration:none;">RENT NOW</a></button>
-      <button class="btn boton-rent-custom"><a href="./customize.html" style="text-decoration:none;">CUSTOMIZE</a></button>
+
+
+      <button class="btn boton-rent-custom" onclick="customize(${item.id})"><a href = "./customize.html" target="_blank" style="text-decoration:none;">CUSTOMIZE</a></button>
+      
+      
       </div>
       <button class="mt-1 btn boton-rent-custom w-100 " onclick="delelement(${incart})">REMOVE</button>
     </div>
@@ -171,11 +177,28 @@ function createListItem(item, incart) {
   return newdiv;
 }
 
+
+
+function customize(index) {
+  const storedCartItems = JSON.parse(localStorage.getItem("PanelData"));
+
+  const customizeitem = storedCartItems[index-1]; 
+
+  localStorage.setItem("customizeitem", JSON.stringify(customizeitem));
+}
+
+
+
+
+
 function delelement(index) {
   listcard.splice(index, 1);
   localStorage.setItem("PanelData", JSON.stringify(listcard));
   reloadcard();
 }
+
+
+
 
 
 function loadFromLocalStorage() {
