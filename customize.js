@@ -16,22 +16,7 @@ carCategory.textContent = storedCartItems.category;
 priceInfo.textContent = storedCartItems.price;
 imgInfo.src = storedCartItems.image;
 
-// devis
-var cart = document.querySelector('#openCartButton');
-var list = document.querySelector('.list');
-var closelist = document.querySelector('#X');
-var listcart = document.querySelector(".list-content");
-var total = document.querySelector('.pricecounter');
-var count = document.querySelector('#panelCounter');
-var listcard = [];
 
-cart.addEventListener("click", function() {
-  list.classList.add("active");
-});
-
-closelist.addEventListener("click",function (){
-  list.classList.remove("active");
-});
 
 
 

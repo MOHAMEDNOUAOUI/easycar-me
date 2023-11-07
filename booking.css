@@ -305,3 +305,7 @@ li {
     color: white !important;
 
 }
+
+.customize > a {
+    pointer-events: none;
+}

@@ -100,7 +100,7 @@ var closelist = document.querySelector('#X');
 var listcart = document.querySelector(".list-content");
 var total = document.querySelector('.pricecounter');
 var count = document.querySelector('#panelCounter');
-var listcard = [];
+let listcard = [];
 
 cart.addEventListener("click", function() {
   list.classList.add("active");
@@ -118,41 +118,45 @@ function addtocart(key) {
 }
 
 
-var totalprice = 0;
+let totalprice = 0;
 var countpanier = 0;
 
 
 
-function reloadcard() {
-  listcart.innerHTML = "";
-  totalprice = 0;
-  countpanier = 0;
-
-  listcard.forEach((value, key) => {
-    totalprice += value.price;
-    localStorage.setItem("totalprice", JSON.stringify(totalprice));
-    countpanier++;
-    add(value);
-  });
-  
-
-  total.innerHTML = totalprice.toLocaleString() + " DH";
-  count.innerHTML = countpanier;
-}
 
 
-function add(value) {
+// function reloadcardmoin() {
+//   listcart.innerHTML = "";
+//   totalprice = 0;
+//   countpanier = 0;
+
+//   listcard.forEach((value, key) => {
+//     totalprice -= value.price;
+//     countpanier--;
+//     add(value, key);
+//   });
+
+//   total.innerHTML = totalprice.toLocaleString() + " DH";
+//   count.innerHTML = countpanier;
+//   localStorage.setItem("totalprice", JSON.stringify(totalprice));
+// }
+
+
+
+
+
+
+function add(value, key) {
   if (listcard.length !== 0) {
-    let listItem = createListItem(value);
+    let listItem = createListItem(value, key);
     listcart.appendChild(listItem);
   }
 }
 
 
 
-function createListItem(item, incart) {
+function createListItem(item, key) {
   let newdiv = document.createElement('li');
-  newdiv.incart = incart; // Use incart to set the class
   newdiv.innerHTML = `
     <div class="incart">
     <img src="${item.image}">
@@ -164,11 +168,11 @@ function createListItem(item, incart) {
       <div class="w-100">
 
 
-      <button class="btn boton-rent-custom" onclick="customize(${item.id})"><a href = "./customize.html" target="_blank" style="text-decoration:none;">CUSTOMIZE</a></button>
+      <button class="btn boton-rent-custom customize" data-key="${key}"><a href = "#" style="text-decoration:none;">CUSTOMIZE</a></button>
       
       
       </div>
-      <button class="mt-1 btn boton-rent-custom w-100 " onclick="delelement(${incart})">REMOVE</button>
+      <button class="mt-1 btn boton-rent-custom w-100 delete-car" data-key="${key}">REMOVE</button>
     </div>
     </div>
     
@@ -178,23 +182,55 @@ function createListItem(item, incart) {
 }
 
 
+// customize button
 
-function customize(index) {
+document.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("customize")) {
+    const deleteBtns = Array.from(document.querySelectorAll(".customize"));
+    const btnIndex = deleteBtns.indexOf(evt.target);
+    customize(btnIndex);
+    window.open("./customize.html", "_blank");
+  }
+});
+
+
+// deleting button
+
+document.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("delete-car")) {
+    const deleteBtns = Array.from(document.querySelectorAll(".delete-car"));
+    const btnIndex = deleteBtns.indexOf(evt.target);
+
+    delelement(btnIndex);
+  }
+});
+
+// customize
+
+function customize(key) {
   const storedCartItems = JSON.parse(localStorage.getItem("PanelData"));
-
-  const customizeitem = storedCartItems[index-1]; 
+  const customizeitem = storedCartItems[key]; 
 
   localStorage.setItem("customizeitem", JSON.stringify(customizeitem));
 }
 
 
+// deleting items from cart
 
+function delelement(i) {
+  const storedPanelItems = JSON.parse(localStorage.getItem("PanelData"));
+  const listContent = document.querySelector(".list-content");
+  const listContentChlidren = document.querySelectorAll(".list-content li");
 
-
-function delelement(index) {
-  listcard.splice(index, 1);
+  storedPanelItems.splice(i, 1);
+ listcard = storedPanelItems
   localStorage.setItem("PanelData", JSON.stringify(listcard));
-  reloadcard();
+  console.log(listcard)
+  console.log(storedPanelItems)
+  console.log(totalprice)
+  listContent.removeChild(listContentChlidren[i]);
+  // location.reload();
+  reloadcard(); 
 }
 
 
@@ -206,6 +242,7 @@ function loadFromLocalStorage() {
   if (storedCartItems) {
     listcard = storedCartItems;
     reloadcard();
+
   }
 }
 
@@ -218,7 +255,25 @@ loadFromLocalStorage();
 
 
 
+function reloadcard() {
 
+  console.log("relod zorking")
+  listcart.innerHTML = "";
+  totalprice = 0;
+  countpanier = 0;
+
+  listcard.forEach((value, key) => {
+    console.log("looping")
+    totalprice += value.price;
+    countpanier++;
+    add(value, key);
+  });
+console.log(totalprice)
+  total.innerHTML = totalprice.toLocaleString() + " DH";
+  count.innerHTML = countpanier;
+  localStorage.setItem("totalprice", JSON.stringify(totalprice));
+  
+}
 
 
 
