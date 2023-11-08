@@ -26,7 +26,8 @@
 </head>
 
 <body>
-  <!-- navbar section --> <nav class="navbar navbar-expand-xl px-5 fixed-top bg-white m-0" style="z-index: 1;">
+  <!-- navbar section --> 
+  <nav class="navbar navbar-expand-xl px-5 fixed-top bg-white m-0 ">
     <div class="container-fluid">
       <a class="navbar-brand fs-2 fw-bold" href="#">
         <img src="./assets/images/LOGO.png" alt="" />
@@ -49,9 +50,10 @@
           <li class="nav-item me-3">
             <a class="nav-link nav-text-top" href="./contact.html">Contact</a>
           </li>
-          <li class="nav-item text-dark fw-bold fs-3 me-3">
-            <span id="panelCounter" class="panel-counter d-flex justify-content-center align-items-center">0</span>
-            <i class="bi bi-cart"  id="openCartButton"></i>
+          <li class="nav-item text-dark fw-bold fs-3 me-3" style="cursor: pointer;">
+            <i class="bi bi-cart-fill position-relative"  id="openCartButton">
+              <span id="panelCounter" class="panel-counter position-absolute" style="top: -5px;right: 0;" id="openCartButton">0</span>
+            </i>
           </li>
 
         </ul>
@@ -60,12 +62,12 @@
   </nav> 
 
 
-  <div class="list position-fixed" style="height: 100vh; width: 32rem;z-index: 1000;">
-    <div class="pe-2 fs-3 bold  position-absolute" style="right: 0;;color: white;cursor: pointer;" id="X">X</div>
+  <div class="list position-fixed" style="height: 100vh; width: 32rem;z-index: 2000;">
+    <i class="bi bi-x-circle-fill position-absolute fs-4 text-center" style="right: 3%;top: .5%;cursor: pointer;color:white;" id="X"></i>
     <div class="list-buttom">
       <p class="pricecounter text-center p-0 m-0 pt-2 pb-2 fw-bold" style="background-color: red; color: white;">TOTAL : 0 DH</p>
   </div>
-  <a href="./devis.html" class="btn boton-rent-custom px-5 mt-3 w-100" target="_blank" style="text-decoration:none;">RENT NOW</a>
+  <a href="./devis.html" class="btn boton-rent-custom px-5 mt-3 w-100" target="_blank" style="text-decoration:none;">RENT ALL</a>
     
     <ul class="list-content">
 
@@ -142,7 +144,7 @@
           <button class="button filter-btn active" data-filter="all">View All</button>
           <button class="button filter-btn " data-filter="Luxury">Luxury</button>
           <button class="button filter-btn " data-filter="Classic">Classic</button>
-          <button class="button filter-btn " data-filter="Hybird">Hybird</button>
+          <button class="button filter-btn " data-filter="Hybrid">Hybird</button>
           <button class="button filter-btn " data-filter="Truck">Truck</button>
         </div>
         <div class="search-bar ">
@@ -222,6 +224,9 @@
     </div>
 
   </footer>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
   <script src="index.js"></script>
   <script src="cardata.js"></script>

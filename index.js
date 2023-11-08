@@ -44,12 +44,6 @@ listButtons.addEventListener("click", function () {
  
 //////////////////////////////////////////////////////////
 
-  
-
-
- 
-
-
   function createGridItemHTML() {
     gridCards.forEach(function(gridCard) {
       carsdata.forEach((value, key) => {
@@ -78,21 +72,6 @@ listButtons.addEventListener("click", function () {
     cardsContainer.innerHTML = ""; // Clear the current content
     createGridItemHTML();
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var cart = document.querySelector('#openCartButton');
 var list = document.querySelector('.list');
@@ -165,14 +144,14 @@ function createListItem(item, key) {
       <div><div class="name">${item.name}</div>
       <div class="pricecart">${item.price.toLocaleString()}</div></div>
       <div class="botons d-grid gap-2 d-md-block">
-      <div class="w-100">
+      <div class="">
 
 
       <button class="btn boton-rent-custom customize" data-key="${key}"><a href = "#" style="text-decoration:none;">CUSTOMIZE</a></button>
-      
+      <button class="mt-1 btn boton-rent-custom  delete-car" data-key="${key}">REMOVE</button>
       
       </div>
-      <button class="mt-1 btn boton-rent-custom w-100 delete-car" data-key="${key}">REMOVE</button>
+      
     </div>
     </div>
     
@@ -256,8 +235,6 @@ loadFromLocalStorage();
 
 
 function reloadcard() {
-
-  console.log("relod zorking")
   listcart.innerHTML = "";
   totalprice = 0;
   countpanier = 0;
@@ -274,6 +251,13 @@ console.log(totalprice)
   localStorage.setItem("totalprice", JSON.stringify(totalprice));
   
 }
+
+
+// Function to filter cars based on a category gridd
+
+
+
+
 
 
 
